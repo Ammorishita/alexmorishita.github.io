@@ -1,0 +1,135 @@
+.stock {
+	display: none;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	&.active {
+		display: flex;
+	}
+}
+.stock__container {
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+.stock__container--chart {
+	width: 100%;
+}
+.stock__interface {
+	background: $color-secondary;
+	width: 100%;
+	max-width: 350px;
+	margin: 10px auto;
+	padding: 10px;
+}
+.input__ticker {
+	width: calc(50% - 15px);
+	margin: 0 15px 0 0;
+	padding: .5em;
+	height: 40px;
+	background: $color-black;
+	color: $color-white;
+	transition: .2s ease-in all;
+	text-transform: uppercase;
+	border: 1px solid $color-white;
+	&:focus {
+		border: 1px solid $color-tertiary;
+	}
+	&::placeholder {
+		color: $color-tertiary;
+		text-transform: none;
+	}
+}
+.stock__button {
+	width: 50%;
+	height: 40px;
+	font-size: 1.125rem;
+	border: 1px solid $color-primary;
+	color: $color-white;
+	background: $color-black;
+	&:hover,&:focus,&.active {
+		border-color: $color-white;
+	}
+}
+.stock__buttons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0;
+	padding: 0 0 15px;
+}
+.stock__button--alt {
+	padding: .5em 1em;
+	font-size: 1.125rem;
+	margin: 0 5px;
+	&.active {
+		border: 1px solid $color-white;
+		color: $color-white;
+	}
+}
+.stock__graph {
+	margin: 20px auto;
+	background: black;
+	width: 100%;
+	max-width: 650px;
+}
+.stock__graph--container {
+	display: block;
+	overflow: visible;
+	margin: 35px auto 0;
+	width: 75%;
+	.tick {
+		font-size: .875rem;
+	}
+}
+.stock__error {
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-align: center;	
+	position: absolute;
+	top: 180px;
+	display: none;
+}
+.stock__error--active {
+	display: block;
+}
+.stock__text {
+	width: 100%;
+}
+.stock__label {
+	fill: $color-white;
+	font-size: 1.25rem;
+}
+.stock__title {
+	font-size: 1.5rem;
+}
+
+@include medium {
+	.finance {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.finance__button--panel {
+		margin: 200px auto 0;
+	}
+	.stock__interface {
+		margin: 10px;
+		padding: 5px;
+	}
+	.stock__container {
+	}
+	.stock__graph--container {
+		.tick {
+			font-size: 1rem;
+		}
+	}
+	.stock__text--small {
+		font-size: 1.125rem;
+	}
+	.stock__buttons {
+		padding: 0;
+	}
+}

@@ -1,0 +1,122 @@
+.clock {
+	width: 100%;
+	height: 100%;
+	// border: 2px solid $color-secondary;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: 5px solid $color-secondary;
+	color: $color-tertiary;
+	visibility: hidden;
+	position: absolute;
+	&.active {
+		visibility: visible;
+		position: static;
+	}
+}
+.clock__interior {
+	width: 100%;
+	height: 100%;
+	// box-shadow: 0 0 5px 10px rgba(36, 138, 255, .35);
+	// border-radius: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	position: relative;
+}
+.clock__interior--secondary {
+	width: 75%;
+	height: 75%;
+}
+.clock__seconds {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	stroke-width: .5;
+	stroke: $color-white;
+	stroke-dashoffset: 157;
+	stroke-dasharray: 157;
+	fill: rgba(0,0,0,.75);
+	transform: rotate(-90deg);
+}
+.clock__seconds--animate {
+	transition: 1s stroke-dashoffset linear;
+	animation: seconds 60s infinite linear;
+}
+.clock__time {
+	font-size: 3rem;
+	width: 100%;
+	display: flex;
+	margin: 0 0 .5rem;
+	justify-content: center;
+}
+.clock__info {
+	font-size: 1.125rem;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	font-weight: 300;
+}
+.clock__detail {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+.clock__detail--hour {
+	text-align: right;
+	margin: 0 7px 0 0;
+	padding: 0 10px 0 0;
+	&:before,&:after {
+		content: '';
+		width: 4px;
+		height: 4px;
+		background: $color-tertiary;
+		position: absolute;
+		right: 0px;
+		top: 15px;
+	}
+	&:after {
+		top: 40px;
+	}
+}
+.clock__detail--secondary {
+	font-weight: 300;
+	margin: 0 5px;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+.clock__detail--secondary:nth-child(2) {
+	font-size: 1.5rem;
+}
+.clock__detail--full {
+	width: 100%;
+	font-size: 1.5rem;
+}
+
+@include large {
+	.clock__detail {
+		font-size: 2.5rem;
+	}
+	.clock__detail--large, .clock__detail--hour {
+		font-size: 5rem;
+	}
+	.clock__detail--hour {
+		padding: 0 15px 0 0;
+		&:before,&:after {
+			width: 8px;
+			height: 8px;
+		}
+		&:before {
+			top: 30px;
+		}
+		&:after {
+			top: 60px;
+		}
+	}
+}

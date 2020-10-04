@@ -1,0 +1,85 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	height: 100%;
+}
+body {
+	background: $color-background;
+	color: $color-white;
+	font-family: $font-primary;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+.button-unstyled {
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+}
+.button {
+	background: $color-black;
+	color: $color-tertiary;
+	border: 1px solid $color-tertiary;
+	border-radius: 3px;
+	padding: .5em 1em;
+	transition: .2s ease-in all;
+	&:hover,&:focus {
+		color: $color-white;
+		border: 1px solid $color-white;
+	}
+}
+#root {
+	height: 100%;
+}
+.app {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	overflow: hidden;
+}
+
+button {
+	cursor: pointer;
+	&:hover,&:focus {
+		outline: none;
+	}
+}
+
+.icon-svg {
+	width: 25px;
+	height: 25px;
+}
+.icon-logo {
+	width: 250px;
+	height: 250px;
+}
+.visually-hidden {
+	clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+h1,h2,h3,h4,h5 {
+	margin: 0 0 .5rem;
+}
+
+img {
+	max-width: 100%;
+}
+
+a {
+	color: $color-primary;
+	transition: .2s ease-in color;
+	text-decoration: none;
+	&:hover,&:focus {
+		color: $color-tertiary;
+		text-decoration: underline;
+	}
+}

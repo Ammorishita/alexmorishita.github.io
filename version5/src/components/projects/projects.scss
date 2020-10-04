@@ -1,0 +1,158 @@
+.projects {
+	display: none;
+	&.active {
+		display: block;
+	}
+}
+.projects__list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+.projects__item {
+	width: calc(50% - 10px);
+	// background: $color-black;
+	// border: 1px solid $color-primary;
+	border-radius: 2px;
+	margin: 5px;
+	text-align: center;
+	display: flex;
+}
+.projects__title {
+	font-size: 1rem;
+	color: $color-secondary;
+	transition: .2s ease-in color;
+}
+.projects__image {
+	width: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-size: 375px;
+	background-position-x: 0;
+	height: 85px;
+	width: 62.5px;
+	margin: 0 auto;
+	&:hover,&:focus {
+	}
+}
+.projects__link {
+	display: block;
+	width: 100%;
+	padding: 5px 0;
+	// background: $color-black;
+	// background: linear-gradient(90deg, transparent 25%, black 55%, transparent 80%);
+	transition: .2s ease-in all;
+	&:hover,&:focus {
+		background: radial-gradient(black, rgba(0, 108, 197, 0.35));
+		text-decoration: none;
+		.projects__title {
+			color: $color-white;
+		}
+	}
+}
+
+.projects__link--lightspeed {
+	&:hover,&:focus {
+		.projects__image {
+			animation: moveX .5s steps(5) infinite;
+		}
+	}
+}
+.projects__link--deal {
+	.icon-deal__letter {
+		fill: red;
+		transition: .2s ease-in fill;
+	}
+	.icon-deal__stroke {
+	
+	}	
+	&:hover,&:focus {
+		.letter-d {
+			fill: $color-black;
+		}
+		.letter-e {
+			transition-delay: .25s;
+			fill: $color-black;
+		}
+		.letter-a {
+			transition-delay: .5s;
+			fill: $color-black;
+		}
+		.letter-l {
+			transition-delay: .75s;
+			fill: $color-black;
+		}
+	}
+}
+.projects__link--grid {
+	&:hover,&:focus {
+		.projects__icon {
+			animation: glowing 1s ease-in-out infinite alternate;
+		}
+	}
+}
+.projects__link--blackjack {
+	&:hover,&:focus {
+		.card-border {
+			fill: $color-black;
+		}
+		.card-outline {
+			fill: $color-red;
+		}
+		.card-body {
+			fill: $color-white;
+		}	
+	}
+	.card-border {
+		fill: $color-primary;
+	}
+	.card-outline {
+		fill: $color-secondary;
+	}
+	.card-body {
+		fill: $color-black;
+	}
+}
+.projects__icon {
+	width: 65px;
+	height: 65px;
+	fill: $color-secondary;
+}
+.projects__icon--blackjack {
+	width: 105px;
+	path, rect {
+		transition: .5s ease-in-out all;
+	}
+}
+.projects__icon--deal {
+	width: 100px;
+	height: 80px;
+}
+.projects__icon--grid {
+	stroke: $color-secondary;
+	transition: stroke .5s ease-in;
+}
+@keyframes animateStroke {
+	from {stroke-dashoffset: 300;}
+	to { stroke-dashoffset: 0;}
+}
+@keyframes glowing {
+	from {
+		stroke: $color-secondary;
+	}
+	to {
+		stroke: $color-tertiary;
+	}
+}
+@include medium {
+	.projects__list {
+	}
+}
+@keyframes moveX{
+	from{background-position-x:0;}
+	to{background-position-x:-312.5px;}
+  }

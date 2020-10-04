@@ -1,0 +1,124 @@
+
+.security {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: $color-background;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.security__button {
+	width: 30vw;
+	height: 30vw;
+	border-radius: 50%;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	display: block;
+	color: $color-primary;
+	position: relative;
+	background: none;
+	transition: box-shadow 1s ease-in-out, top 2s ease-in-out;
+	&:before,&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		border-radius: 50%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		box-shadow: 0 0 5px 5px $color-primary;
+		// animation: glow-grow 10s infinite cubic-bezier(.17,.67,.41,1.04);
+	}
+	&:after {
+		animation-delay: 3s;
+	}
+}
+.security__button--unlocked {
+	animation: unlock 3s linear forwards;
+}
+@keyframes glow-grow {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	30% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: scale(4);
+	}
+}
+@keyframes unlock {
+	0% {
+		top: 0;
+	}
+	25% {
+		top: -25vh;
+	}
+	100% {
+		top: 110vh;
+	}
+}
+@keyframes glowing {
+	0% {
+		box-shadow: 0 0 0 $color-secondary;
+	}
+	25% {
+		box-shadow: 0 0 100vw 5px $color-secondary;
+	}
+	50% {
+		box-shadow: 0 0 0 $color-secondary, 0 0 0 red;
+	}
+	100% {
+		// box-shadow: 0 0 0 $color-secondary;
+		box-shadow: 0 0 0 $color-secondary, 0 0 100vw 5px red;
+	}
+}
+.security__icon {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	border-radius: 50%;
+	fill: $color-active;
+	fill: $color-primary;
+	// animation: glowing 5s infinite ease-in-out;
+}
+.security__path {
+	fill: $color-secondary;
+	opacity: 1;
+}
+.security__path--active {
+	opacity: 1;
+}
+.security__icon-thumb {
+	width: 50%;
+	height: 50%;
+	fill: $color-secondary;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.security__text {
+	font-size: 10vw;
+	color: $color-tertiary;
+	display: block;
+	text-align: center;
+}
+
+@include large {
+	.security {
+		display: none;
+	}
+}

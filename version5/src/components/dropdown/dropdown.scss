@@ -1,0 +1,22 @@
+
+
+.dropdown {
+	width: 1200px;
+	outline: 1px solid lime;
+	margin: 0 auto;
+	display: none;
+	overflow: hidden;
+}
+.dropdown__content {
+	// max-height: 0;
+	// overflow: hidden;
+	// transition: max-height 1s ease-in-out;
+}
+.dropdown__button {
+	width: 100px;
+	height: 100px;
+	border: 1px solid $color-primary;
+	color: $color-white;
+	position: relative;
+	left: 400px;
+}
