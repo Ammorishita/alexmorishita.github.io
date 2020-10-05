@@ -1,0 +1,92 @@
+# [START runtime]
+runtime: python27
+api_version: 1
+threadsafe: true
+env: standard
+
+env_variables:
+  SENDGRID_API_KEY: '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'
+
+# [END runtime]
+
+# [START handlers]
+handlers:
+  - url: '/service-worker.js'
+    secure: always
+    redirect_http_response_code: 301
+    static_files: build/service-worker.js
+    upload: build/service-worker.js
+    mime_type: application/javascript
+
+  - url: /(precache-manifest.*)$
+    secure: always
+    redirect_http_response_code: 301
+    mime_type: application/javascript
+    static_files: build/\1
+    upload: build/(precache-manifest.*)$
+    
+  - url: /static/js/(.*)
+    static_files: build/static/js/\1
+    secure: always
+    redirect_http_response_code: 301
+    upload: build/static/js/(.*)
+  - url: /static/css/(.*)
+    static_files: build/static/css/\1
+    upload: build/static/css/(.*)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /static/media/(.*)
+    static_files: build/static/media/\1
+    upload: build/static/media/(.*)
+    secure: always
+    redirect_http_response_code: 301
+  - url: /images/(.*)
+    static_files: build/images/\1
+    upload: build/images/(.*)
+    secure: always
+    redirect_http_response_code: 301
+  - url: /(.*\.(json|ico))$
+    static_files: build/\1
+    upload: build/.*\.(json|ico)$
+    secure: always
+    redirect_http_response_code: 301
+  - url: /
+    static_files: build/index.html
+    upload: build/index.html
+    secure: always
+    redirect_http_response_code: 301
+  - url: /contact-action
+    script: server.app
+    secure: always
+    redirect_http_response_code: 301
+  - url: /.*
+    static_files: build/index.html
+    secure: always
+    redirect_http_response_code: 301
+    upload: build/index.html
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+# [END handlers]
+
+skip_files:
+  - ^(.*/)?#.*#$
+  - ^(.*/)?.*~$
+  - ^(.*/)?.*\.py[co]$
+  - ^(.*/)?.*/RCS/.*$
+  - ^(.*/)?\..*$
+  - webpack.config.js
+  - package.json
+  - yarn.lock
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.dist-info$
+  - ^(.*/)?.*/node_modules/.*$
+  - node_modules
+  - Dockerfile
+  - admin
+  - api
