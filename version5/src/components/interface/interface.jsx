@@ -4,7 +4,6 @@ import Weather from "../../components/weather/weather";
 import Stocks from "../../components/stocks/stocks";
 import Calculator from "../../components/calculator/calculator";
 import Projects from "../../components/projects/projects";
-import { active } from "d3";
 
 class Interface extends React.Component {
 	constructor(props) {
