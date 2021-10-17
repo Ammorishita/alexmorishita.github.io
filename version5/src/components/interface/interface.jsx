@@ -3,7 +3,7 @@ import Clock from "../../components/clock/clock";
 import Weather from "../../components/weather/weather";
 import Stocks from "../../components/stocks/stocks";
 import Calculator from "../../components/calculator/calculator";
-import Projects from "../../components/projects/projects";
+import Projects from "../../components/projects/projects2";
 
 class Interface extends React.Component {
 	constructor(props) {
@@ -117,6 +117,7 @@ class Interface extends React.Component {
 		
 		return (
 			<div className="interface">
+
 				<div className="interface__container" id="interface">
 					{/* <div className="interface__ring interface__ring--inner"></div> */}
 					<div className="interface__rings" id="interface-rings">

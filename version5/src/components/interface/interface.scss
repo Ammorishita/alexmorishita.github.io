@@ -180,6 +180,8 @@
 		width: 55%;
 		height: 55%;
 		align-items: center;
+		position: absolute;
+		@include center;
 	}
 	.interface__rings {
 		display: flex;
@@ -216,5 +218,44 @@
 	.interface__container {
 		width: 600px;
 		height: 600px;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: minmax(min-content, 1fr);
+	grid-gap: 20px;
+	.item {
+		background: lime;
+		padding: 25px;
+	}
+	.item-1 {
+		background: orange;
+		grid-row: 1/2;
+		grid-column: 1/2;
+		align-self: start;
+	}
+	.item-2 {
+		background: blue;
+		grid-row: 2/3;
+		grid-column: 1/2;
+	}
+	.item-3 {
+		background: red;
+		grid-row: 3/4;
+		grid-column: 1/2;
+	}
+	.item-4 {
+		background: yellow;
+		grid-row: 1/2;
+		grid-column: 2/3;
+		align-self: start;
+	}
+	.item-4 {
+		background: lime;
+		grid-row: 2/3;
+		grid-column: 2/3;
+		align-self: start;
 	}
 }

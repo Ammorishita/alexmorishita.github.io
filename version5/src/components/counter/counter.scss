@@ -1,0 +1,10 @@
+.counter {
+    display: none;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	&.active {
+		display: flex;
+	}
+}
