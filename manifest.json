@@ -1,0 +1,26 @@
+{
+	"short_name": "Alex Morishita",
+	"name": "Alex Morishita",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "16x16",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "images/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "images/icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/",
+	"display": "standalone",
+	"orientation" : "portrait",
+	"theme_color": "#00a0fc",
+	"background_color": "#248aff"
+}
