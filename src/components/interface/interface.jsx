@@ -3,7 +3,7 @@ import Clock from "../../components/clock/clock";
 import Weather from "../../components/weather/weather";
 import Stocks from "../../components/stocks/stocks";
 import Calculator from "../../components/calculator/calculator";
-import Projects from "../../components/projects/projects2";
+import Projects from "../../components/projects/projects";
 
 class Interface extends React.Component {
 	constructor(props) {

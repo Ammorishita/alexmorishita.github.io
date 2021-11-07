@@ -1,148 +1,60 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
 import lightspeed from "../../assets/images/flash-sprite-2.png";
-class Projects extends React.Component {
-	constructor(props) {
-		super();
-	}
 
-	render() {
-		const activeClass = (this.props.active === "projects")
-			? "projects active"
-			: "projects";
-		const lightspeedStyle = {
-			backgroundImage: `url(${lightspeed})`,
-		};
-		return (
-			<div className={activeClass}>
-				<ul className="projects__list">
-					<li className="projects__item">
-						<a href="https://monopolydeal.herokuapp.com" target="_blank" rel="noopener noreferrer" className="projects__link projects__link--deal">
-							<h3 className="projects__title">Monopoly Deal</h3>
-							<svg className="icon-svg projects__icon projects__icon--deal" viewBox="0 0 386 238.5">
-								<g>
-									<g>
-										<path className="icon-deal__letter letter-a" d="M245.907,58.437l-60.493,98.944l18.653,12.952l11.74-22.139c0,0,42.14-0.451,42.58,0c0.44,0.452,11.6,25,11.6,25
-			l26.723-1.205L245.907,58.437z M227.848,128.466l14.535-25.752l11.894,26.656L227.848,128.466z"/>
-										<path className="icon-deal__stroke" fill="#FFFFFF" d="M245.907,58.437l50.803,113.552l-26.723,1.205c0,0-11.159-24.548-11.6-25
-			c-0.146-0.15-4.926-0.2-11.234-0.2c-12.617,0-31.346,0.2-31.346,0.2l-11.74,22.139l-18.653-12.952L245.907,58.437 M254.276,129.37
-			l-11.894-26.656l-14.535,25.752L254.276,129.37 M246.869,43.256l-6.933,11.341l-60.493,98.944l-3.616,5.913l5.636,3.913
-			l18.654,12.952l6.431,4.465l3.711-6.997l9.76-18.405c6.24-0.059,18.268-0.158,27.135-0.158c3.098,0,5.274,0.012,6.801,0.028
-			c2.325,4.965,6.556,14.201,9.646,20.996l1.99,4.38l4.707-0.212l26.723-1.205l10.465-0.472l-4.369-9.765L252.313,55.422
-			L246.869,43.256L246.869,43.256z M239.843,121.644l1.807-3.202l1.479,3.313L239.843,121.644L239.843,121.644z"/>
-									</g>
-								</g>
-								<g>
-									<polygon className="icon-deal__letter letter-e" points="124.675,63.658 184.582,63.658 190.65,86.029 151.104,86.029 151.104,106.83 179.884,106.83 179.884,128.718 
-		151.692,128.718 151.692,152.612 194.957,152.612 188.889,174.7 124.675,174.7 	"/>
-									<path className="icon-deal__stroke" fill="#FFFFFF" d="M184.582,63.658l6.068,22.371h-39.546v20.801h28.779v21.888h-28.192v23.895h43.265l-6.068,22.088h-64.213
-		V63.658H184.582 M189.937,56.429h-5.354h-59.907h-7.048v7.229V174.7v7.229h7.048h64.213h5.336l1.447-5.269l6.069-22.086l2.525-9.19
-		h-9.31H158.74v-9.438h21.144h7.048v-7.229V106.83v-7.229h-7.048h-21.731v-6.344h32.498h9.276l-2.487-9.167l-6.067-22.371
-		L189.937,56.429L189.937,56.429z"/>
-								</g>
-								<g>
-									<polygon className="icon-deal__letter letter-l" points="289.712,63.658 316.923,61.851 312.421,152.863 354.12,154.068 346.045,178.314 285.845,176.056 	" />
-									<path className="icon-deal__stroke" fill="#FFFFFF" d="M316.923,61.851l-4.502,91.012l41.699,1.205l-8.075,24.246l-60.2-2.259l3.867-112.397L316.923,61.851
-		 M324.363,54.113l-7.896,0.525l-27.212,1.807l-6.362,0.422l-0.226,6.536l-3.866,112.398l-0.249,7.214l7.034,0.264l60.199,2.26
-		l5.234,0.196l1.693-5.084l8.075-24.247l3.093-9.285l-9.563-0.277l-34.493-0.995l4.137-83.629L324.363,54.113L324.363,54.113z"/>
-								</g>
-								<g>
-									<g>
-										<path className="icon-deal__letter letter-d" d="M124.676,100.807c-15.27-47.991-61.081-39.357-61.081-39.357L27.377,66.67l15.662,111.645
-			C106.078,170.483,139.946,148.797,124.676,100.807z M68.489,152.612l-12.726-65.46c5.286-1.205,40.134-6.626,48.356,24.498
-			C112.342,142.773,68.489,152.612,68.489,152.612z"/>
-										<path className="icon-deal__stroke" fill="#FFFFFF" d="M71.803,60.844c13.898,0,41.644,4.672,52.873,39.962c15.27,47.99-18.598,69.677-81.637,77.508
-			L27.377,66.67l36.218-5.221C63.595,61.449,66.801,60.844,71.803,60.844 M68.489,152.612c0,0,43.853-9.839,35.63-40.963
-			c-5.722-21.66-24.338-25.621-36.913-25.62c-5.494,0-9.836,0.756-11.443,1.123L68.489,152.612 M71.803,53.616
-			c-5.004,0-8.442,0.541-9.306,0.692l-36.101,5.204l-7.002,1.009l1.007,7.179l15.662,111.644l0.982,6.997l6.842-0.85
-			c44.545-5.534,72.119-17.753,84.299-37.355c8.322-13.393,9.395-30.071,3.19-49.572C118.468,57.996,85.414,53.616,71.803,53.616
-			L71.803,53.616z M64.154,93.346c0.965-0.055,1.99-0.087,3.053-0.087c16.424-0.001,26.555,6.824,30.11,20.282
-			c1.435,5.431,0.892,10.168-1.66,14.481c-4.488,7.584-14.399,12.674-21.767,15.41L64.154,93.346L64.154,93.346z"/>
-									</g>
-								</g>
-								<g>
-									<path className="icon-deal__letter2" fill="#fff" d="M382,4v230.557H4V4H382 M382,0H4C1.791,0,0,1.791,0,4v230.557c0,2.209,1.791,4,4,4h378c2.209,0,4-1.791,4-4
-		V4C386,1.791,384.209,0,382,0L382,0z"/>
-								</g>
-							</svg>
-						</a>
-					</li>
-					<li className="projects__item">
-						<a href="https://ammorishita.github.io/Blackjack" target="_blank" rel="noopener noreferrer" className="projects__link projects__link--blackjack">
-							<h3 className="projects__title">Blackjack</h3>
-							<svg className="icon-svg projects__icon projects__icon--blackjack">
-								<g>
-									<g>
-										<path className="card-border" d="M70.928,123.408c-0.396,0-0.792-0.052-1.179-0.154L9.42,107.199c-1.18-0.314-2.167-1.069-2.78-2.125
-			c-0.612-1.057-0.777-2.288-0.463-3.469L32.178,3.897c0.533-2,2.349-3.397,4.416-3.397c0.396,0,0.792,0.052,1.178,0.154
-			l60.331,16.055c1.18,0.314,2.167,1.069,2.779,2.125c0.612,1.056,0.776,2.288,0.463,3.468l-26.001,97.709
-			C74.812,122.012,72.995,123.408,70.928,123.408z"/>
-										<g>
-											<path className="card-outline" d="M36.594,1c0.347,0,0.699,0.044,1.05,0.138l60.33,16.055c2.173,0.578,3.466,2.809,2.888,4.981
-				L74.86,119.883c-0.484,1.822-2.132,3.025-3.933,3.025c-0.347,0-0.699-0.044-1.05-0.138l-60.33-16.055
-				c-2.173-0.578-3.466-2.809-2.888-4.981L32.662,4.025C33.147,2.203,34.793,1,36.594,1 M36.594,0L36.594,0
-				c-2.293,0-4.308,1.549-4.898,3.768L5.694,101.478c-0.348,1.309-0.166,2.675,0.513,3.847c0.679,1.173,1.774,2.01,3.083,2.358
-				l60.33,16.055c0.428,0.113,0.867,0.171,1.307,0.171c2.294,0,4.309-1.55,4.899-3.769l26.001-97.708
-				c0.719-2.703-0.895-5.486-3.598-6.205L37.901,0.171C37.473,0.058,37.033,0,36.594,0L36.594,0z"/>
-										</g>
-									</g>
-
-									<rect x="28.572" y="17.796" transform="matrix(0.9664 0.2572 -0.2572 0.9664 17.6564 -11.7684)" fill="#01040C" className="card-body" strokeMiterlimit="10" width="50.498" height="87.646" />
-									<text transform="matrix(0.9664 0.2572 -0.2572 0.9664 32.8408 9.98)" fill="#FFFFFF" fontFamily="'Centaur'" fontSize="11.1468">A</text>
-
-									<text transform="matrix(-0.9664 -0.2572 0.2572 -0.9664 73.501 112.2041)" fill="#FFFFFF" fontFamily="'Centaur'" fontSize="11.1468">J</text>
-									<polygon fill="#FFFFFF" points="36.04,20.274 32.51,23.602 30.774,18.873 34.631,15.632 	" />
-									<polygon fill="#FFFFFF" points="76.982,103.595 73.452,106.923 71.715,102.193 75.573,98.953 	" />
-								</g>
-								<g>
-									<g>
-										<path className="card-border" d="M31.574,140.618c-2.057,0-3.871-1.388-4.41-3.375L0.66,39.669C0,37.237,1.441,34.721,3.873,34.06
-			l60.248-16.365c0.393-0.107,0.797-0.161,1.2-0.161c2.057,0,3.869,1.388,4.409,3.375l26.504,97.574
-			c0.66,2.433-0.781,4.949-3.214,5.609l-60.247,16.365C32.381,140.563,31.978,140.618,31.574,140.618z"/>
-										<path className="card-outline" d="M65.321,18.034c1.792,0,3.434,1.193,3.927,3.006l26.504,97.574c0.589,2.17-0.692,4.407-2.862,4.996
-			l-60.247,16.365c-0.357,0.097-0.716,0.144-1.069,0.144c-1.793,0-3.436-1.193-3.928-3.006L1.143,39.539
-			c-0.589-2.17,0.692-4.407,2.862-4.997l60.248-16.365C64.609,18.08,64.969,18.034,65.321,18.034 M65.321,17.034L65.321,17.034
-			c-0.448,0-0.896,0.06-1.331,0.179L3.742,33.577c-2.698,0.733-4.297,3.525-3.564,6.224l26.504,97.573
-			c0.599,2.204,2.61,3.744,4.893,3.744c0.448,0,0.896-0.061,1.331-0.179l60.247-16.365c2.698-0.732,4.298-3.523,3.565-6.223
-			L70.213,20.777C69.614,18.573,67.603,17.034,65.321,17.034L65.321,17.034z"/>
-									</g>
-
-									<rect x="23.082" y="34.932" transform="matrix(0.965 -0.2621 0.2621 0.965 -18.9544 15.4232)" className="card-body" strokeMiterlimit="10" width="50.498" height="87.646" />
-									<g>
-										<path fill="#FFFFFF" d="M4.311,37.595l-0.085-0.191c0.077-0.021,0.341-0.081,0.792-0.181c0.45-0.1,0.715-0.16,0.796-0.182
-			c0.238-0.064,0.698-0.212,1.38-0.443l0.065,0.197c-0.315,0.108-0.529,0.209-0.642,0.304s-0.165,0.233-0.157,0.415
-			c0.008,0.182,0.067,0.488,0.175,0.917c0.042,0.199,0.1,0.443,0.176,0.731c0.076,0.288,0.147,0.56,0.212,0.817l0.219,0.804
-			c0.037,0.137,0.159,0.567,0.365,1.292c0.206,0.724,0.359,1.271,0.459,1.639c0.07,0.259,0.125,0.495,0.164,0.706
-			c-0.187,0.518-0.399,0.993-0.639,1.427c-0.239,0.434-0.525,0.695-0.858,0.786c-0.077,0.021-0.161,0.016-0.252-0.017
-			c-0.092-0.032-0.144-0.071-0.156-0.117c-0.017-0.063,0.049-0.172,0.199-0.327c0.15-0.154,0.259-0.241,0.329-0.259
-			c0.021-0.006,0.128-0.001,0.321,0.014c0.438-0.119,0.399-1.124-0.114-3.015l-0.566-2.085c-0.238-0.875-0.434-1.558-0.588-2.049
-			c-0.153-0.49-0.275-0.813-0.364-0.967c-0.089-0.154-0.19-0.254-0.304-0.298c-0.118-0.047-0.268-0.057-0.451-0.03
-			S4.445,37.548,4.311,37.595z"/>
-									</g>
-
-									<text transform="matrix(-0.965 0.2621 -0.2621 -0.965 90.7266 112.6514)" fill="#FFFFFF" fontFamily="'Centaur'" fontSize="11.1468">J</text>
-									<polygon fill="#FFFFFF" points="12.214,51.902 10.829,56.551 6.955,53.331 8.667,48.593 	" />
-									<polygon fill="#FFFFFF" points="89.419,103.457 88.034,108.106 84.16,104.886 85.872,100.147 	" />
-								</g>
-							</svg>
-						</a>
-					</li>
-					<li className="projects__item">
-						<a href="https://ammorishita.github.io/LightSpeedRunner/" target="_blank" rel="noopener noreferrer" className="projects__link projects__link--lightspeed">
-							<h3 className="projects__title">Lightspeed Runner</h3>
-							<div className="projects__image" style={lightspeedStyle}></div>
-						</a>
-					</li>
-					<li className="projects__item">
-						<a href="https://ammorishita.github.io/GridBlaster/game.html" target="_blank" rel="noopener noreferrer" className="projects__link projects__link--grid">
-							<h3 className="projects__title">Grid Blaster</h3>
-							<svg className="icon-svg projects__icon projects__icon--grid">
-								<use xlinkHref="#icon-grid-blaster"></use>
-							</svg>
-						</a>
-					</li>
-				</ul>
-			</div>
-		);
-	}
+function Projects(props) {
+    const [data, updateDate] = useState([
+        {
+            name: 'Monopoly Deal',
+            url: 'https://monopolydeal.herokuapp.com',
+            icon: 'icon-deal',
+            class: 'deal',
+        },
+        {
+            name: 'Blackjack',
+            url: 'https://alexmorishita.com/projects/Blackjack/index.html',
+            icon: 'icon-blackjack',
+            class: 'blackjack',
+        },
+        {
+            name: 'Lightspeed Runner',
+            url: 'https://alexmorishita.com/projects/LightSpeedRunner/index.html',
+            icon: 'icon-lightspeed',
+            class: 'lightspeed',
+            image: 'lightspeed',
+        },
+        {
+            name: 'Grid Blaster',
+            url: 'https://alexmorishita.com/projects/GridBlaster/game.html',
+            icon: 'icon-grid-blaster',
+            class: 'grid',
+        },
+    ]);
+    const activeClass = (props.active === "projects")
+        ? "projects active"
+        : "projects";
+    const lightspeedStyle = {
+        backgroundImage: `url(${lightspeed})`,
+    };
+    return (
+        <div className={activeClass}>
+            <ul className="projects__list">
+                {data.map(item => {
+                    return (<li className="projects__item" key={item.class}>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" className={`projects__link projects__link--${item.class}`}>
+                            <h3 className="projects__title">{item.name}</h3>
+                            {(item.image === 'lightspeed' ? 
+                                (<div className="projects__image" style={lightspeedStyle}></div>) 
+                                : ('') 
+                            )}
+                            <svg className={`icon-svg projects__icon projects__icon--${item.class}`}>
+                                <use xlinkHref={`#${item.icon}`}></use>
+                            </svg>
+                        </a>
+                    </li>)
+                })}
+            </ul>
+        </div>
+    )
 }
+
 export default Projects;
