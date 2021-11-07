@@ -11,20 +11,20 @@ function Projects(props) {
         },
         {
             name: 'Blackjack',
-            url: 'https://ammorishita.github.io/Blackjack',
+            url: 'https://alexmorishita.com/projects/Blackjack/index.html',
             icon: 'icon-blackjack',
             class: 'blackjack',
         },
         {
             name: 'Lightspeed Runner',
-            url: 'https://ammorishita.github.io/LightSpeedRunner/',
+            url: 'https://alexmorishita.com/projects/LightSpeedRunner/index.html',
             icon: 'icon-lightspeed',
             class: 'lightspeed',
             image: 'lightspeed',
         },
         {
             name: 'Grid Blaster',
-            url: 'https://ammorishita.github.io/GridBlaster/game.html',
+            url: 'https://alexmorishita.com/projects/GridBlaster/game.html',
             icon: 'icon-grid-blaster',
             class: 'grid',
         },
